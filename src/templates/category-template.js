@@ -5,12 +5,8 @@ import Layout from "../components/layout"
 import ProductGrid from "../components/product-grid"
 
 const CategoryTemplate = ({ data }) => {
-  console.log(data)
   const category = data.strapiCategories;
   const products = data.allStrapiProducts;
-
-  console.log(products);
-
   return (
     <Layout>
       <HeroSingle title={category.title} subtitle={category.description} imageSrc={category.image.localFile.publicURL} />

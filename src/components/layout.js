@@ -1,13 +1,14 @@
 import * as React from "react"
 import Footer from "./footer"
 import Navbar from "./navbar"
+import CookiePopover from './cookie-popover'
 
 const Layout = ({ children }) => {
 
   return (
     <div>
       <Navbar />
-      <main>{children}</main>
+      <main className="max-w-screen-xl m-auto py-10 px-4">{children}</main>
       <Footer />
     </div>
   )
