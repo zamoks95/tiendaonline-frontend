@@ -6,7 +6,7 @@ import ProductGrid from "../components/product-grid"
 
 const CategoryTemplate = ({ data }) => {
   const category = data.strapiCategories;
-  const products = data.allStrapiProducts;
+  const products = data.allStrapiProducts.nodes;
   return (
     <Layout>
       <HeroSingle title={category.title} subtitle={category.description} imageSrc={category.image.localFile.publicURL} />
@@ -38,6 +38,7 @@ export const pageQuery = graphql`
         name
         slug
         price
+        price_discount
         image {
           localFile {
             publicURL

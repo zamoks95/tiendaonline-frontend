@@ -11,7 +11,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const resultCategories = await graphql(
     `
     {
-      allStrapiCategories(filter: {page: {name: {eq: "powerlifting"}}}) {
+      allStrapiCategories(filter: {page: {name: {eq: "${process.env.STRAPI_PAGE}"}}}) {
         nodes {
           title
           slug
@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const resultProducts = await graphql(
     `
     {
-      allStrapiProducts(filter: {pages: {elemMatch: {name: {eq: "powerlifting"}}}}) {
+      allStrapiProducts(filter: {pages: {elemMatch: {name: {eq: "${process.env.STRAPI_PAGE}"}}}}) {
         nodes {
           slug
         }

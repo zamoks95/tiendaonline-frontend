@@ -1,56 +1,83 @@
-import * as React from "react"
+import React, { useState } from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import { AiOutlineMenu, AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 const Navbar = () => {
+    const data = useStaticQuery(graphql`
+    query NavbarQuery{
+        allStrapiPages(filter: {name: {eq: "juegosdemesa" }}) {
+            nodes {
+              categories {
+                title
+                slug
+              }
+              name
+            }
+        }
+      }
+  `)
+
+    const categories = data.allStrapiPages.nodes[0].categories;
+    const pageTitle = data.allStrapiPages.nodes[0].name
+    const [isOpen, setIsOpen] = useState(false);
+
+    const [query, setQuery] = useState('');
+    const handleSearchClick = () => {
+        console.log('clicked', query);
+        window.location.href = `/buscador?search=${query}`;
+    }
+
     return (
-        <nav className="bg-white shadow-sm sticky top-0">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 md:py-4">
-                <div className="flex items-center justify-between md:justify-start">
-
-                    <button type="button" className="md:hidden w-10 h-10 rounded-lg -ml-2 flex justify-center items-center">
-                        <svg className="text-gray-500 w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+        <nav className={`bg-white shadow-sm sticky top-0 left-0 z-50`}>
+            <div className="max-w-7xl mx-auto px-4 md:px-12 py-1 md:py-4">
+                <div className="flex flex-wrap items-center justify-between md:justify-start">
+                    <Link
+                        to={`/`}
+                        title={`Ir al Inicio`}
+                        className="font-bold text-gray-700 text-2xl capitalize"
+                    >
+                        {pageTitle}
+                    </Link>
+                    <button type="button" className="md:hidden w-10 h-10 rounded-lg flex justify-center items-center" onClick={() => setIsOpen(!isOpen)}>
+                        {!isOpen && <AiOutlineMenu />}
+                        {isOpen && <AiOutlineClose />}
                     </button>
-
-                    <a href="http://google.com" className="font-bold text-gray-700 text-2xl">Shop.</a>
-
-                    <div className="hidden md:flex space-x-3 flex-1 lg:ml-8">
-                        <a href="http://google.com" className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">Electronics</a>
-                        <a href="http://google.com" className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">Fashion</a>
-                        <a href="http://google.com" className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">Tools</a>
-                        <a href="http://google.com" className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">Books</a>
-                        <a href="http://google.com" className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">More</a>
+                    <div className="hidden md:flex space-x-3 flex-1 ml-8">
+                        {categories.map(({ title, slug }) => (
+                            <Link
+                                to={`/${slug}`}
+                                title={`Ir a ${title}`}
+                                className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
+                                key={slug}
+                            >
+                                {title}
+                            </Link>
+                        ))}
                     </div>
-
-                    <div className="flex items-center space-x-4">
-                        <div className="relative hidden md:block">
-                            <input type="search" className="pl-10 pr-2 h-10 py-1 rounded-lg border border-gray-200 focus:border-gray-300 focus:outline-none focus:shadow-inner leading-none" placeholder="Search" />
-                            <svg className="h-6 w-6 text-gray-300 ml-2 mt-2 stroke-current absolute top-0 left-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
+                    <div className="flex justify-center ml-0 lg:ml-8 w-full lg:w-auto mt-3 mb-1 lg:my-0">
+                        <div className="input-group flex items-stretch w-full">
+                            <input type="search" className=" flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Buscar producto" aria-label="Search" aria-describedby="button-addon3" value={query} onChange={(event) => setQuery(event.target.value)} />
+                            <button className="btn inline-block px-3 py-2 border-2 border-blue-600 text-blue-600 font-medium text-md rounded" type="button" id="button-addon3" onClick={handleSearchClick}><AiOutlineSearch /></button>
                         </div>
-
-                        <a href="http://google.com" className="flex h-10 items-center px-2 rounded-lg border border-gray-200 hover:border-gray-300 focus:outline-none hover:shadow-inner">
-                            <svg className="h-6 w-6 leading-none text-gray-300 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                            </svg>
-                            <span className="pl-1 text-gray-500 text-md">0</span>
-                        </a>
-
-                        <button type="button" className="hidden md:block w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex justify-center items-center">
-                            <img src="https://avatars.dicebear.com/api/bottts/2.svg" alt="bottts" width="28" height="28" className="rounded-lg mx-auto" />
-                        </button>
                     </div>
                 </div>
-                <div className="relative md:hidden">
-                    <input type="search" className="mt-1 w-full pl-10 pr-2 h-10 py-1 rounded-lg border border-gray-200 focus:border-gray-300 focus:outline-none focus:shadow-inner leading-none" placeholder="Search" />
-
-                    <svg className="h-6 w-6 text-gray-300 ml-2 mt-3 stroke-current absolute top-0 left-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </div>
-
+                {isOpen &&
+                    <div className="flex flex-col md:hidden">
+                        {categories.map(({ title, slug }) => (
+                            <Link
+                                to={`/${slug}`}
+                                title={`Ir a ${title}`}
+                                className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
+                                key={slug}
+                            >
+                                {title}
+                            </Link>
+                        ))}
+                    </div>
+                }
             </div>
         </nav>
     )
 }
+
+
 export default Navbar;

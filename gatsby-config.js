@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
@@ -14,12 +18,21 @@ module.exports = {
   plugins: [
     `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-global-context',
+      options: {
+        context: {
+          strapiPage: process.env.STRAPI_PAGE
+        }
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -50,6 +63,43 @@ module.exports = {
         apiURL: `http://admin.tiendaonline.one`,
         queryLimit: 1000,
         collectionTypes: [`products`, `pages`, `categories`],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'products',
+        engine: 'flexsearch',
+        engineOptions: 'speed',
+        query: `
+          {
+            allStrapiProducts {
+              nodes {
+                id
+                name
+                slug
+                description
+                image {
+                  localFile {
+                    publicURL
+                  }
+                }
+              }
+            }
+          }
+        `,
+        ref: 'slug',
+        index: ['name'],
+        store: ['slug', 'name', 'image'],
+        normalizer: ({ data }) =>
+          data.allStrapiProducts.nodes.map((node) => {
+            return ({
+              id: node.id,
+              slug: node.slug,
+              name: node.name,
+              image: node.image
+            })
+          }),
       },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

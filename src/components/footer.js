@@ -6,9 +6,9 @@ const Footer = () => {
                 <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
                     <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
                         <a href="http://google.com" title="google" className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-white p-2 bg-pink-600 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            {/* <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-white p-2 bg-pink-600 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
+                            </svg> */}
                             <span className="ml-3 text-xl text-white">DEV</span>
                         </a>
                         <p className="mt-2 text-sm text-white">Air plant banjo lyft occupy retro adaptogen indego</p>
