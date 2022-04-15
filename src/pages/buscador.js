@@ -9,12 +9,13 @@ import queryString from 'query-string'
 
 const Buscador = ({ data, location }) => {
   const { index, store } = data.localSearchProducts;
+  const pageDescription = data.strapiPages;
   const { search } = queryString.parse(location.search);
   const [query, setQuery] = useState(search ?? '')
   const results = useFlexSearch(query, index, store)
 
   return (
-    <Layout location={'Buscador'} title={'Buscador'}>
+    <Layout location={'Buscador'} title={'Buscador'} pageName={pageDescription.title}>
       <Seo title="Buscador" />
       <section>
         <header className="text-center pb-8">
@@ -35,10 +36,17 @@ const Buscador = ({ data, location }) => {
 }
 
 export const pageQuery = graphql`
-  query SearchQuery {
+  query SearchQuery(
+    $strapiPage: String
+  )  {
     localSearchProducts {
       index
       store
+    }
+    strapiPages(name: {eq: $strapiPage}) {
+      description
+      title
+      color
     }
   }
 `

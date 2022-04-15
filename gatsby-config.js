@@ -1,5 +1,5 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env`,
 })
 
 module.exports = {
@@ -90,13 +90,15 @@ module.exports = {
         `,
         ref: 'slug',
         index: ['name'],
-        store: ['slug', 'name', 'image'],
+        store: ['slug', 'name', 'image', 'price', 'price_discount'],
         normalizer: ({ data }) =>
           data.allStrapiProducts.nodes.map((node) => {
             return ({
               id: node.id,
               slug: node.slug,
               name: node.name,
+              price: node.price,
+              price_discount: node.price_discount,
               image: node.image
             })
           }),

@@ -2,22 +2,20 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
-import HomepageCarrousel from "../components/homepage-carrousel"
 import HomeCategories from "../components/home-categories"
 import HomeHeader from "../components/home-header"
 import HomeFavorites from "../components/home-favorites/home-favorites"
 
 const Index = ({ data }) => {
+  const pageDescription = data.strapiPages;
   const products = data.allStrapiProducts.nodes;
+  const categories = data.allStrapiCategories.edges;
   return (
-    <Layout location={'title'} title={'title'}>
-      <Seo title="All posts" />
-      {/* https://tailwindui.com/components/ecommerce/page-examples/storefront-pages */}
-
-      <HomeHeader />
-      <HomeCategories />
+    <Layout pageName={pageDescription.title}>
+      <Seo title={`Tienda Online de ${pageDescription.title}`} />
+      <HomeHeader pageDescription={pageDescription} />
+      <HomeCategories categories={categories} />
       <HomeFavorites products={products} />
-
     </Layout>
   )
 }
@@ -25,8 +23,10 @@ const Index = ({ data }) => {
 export default Index
 
 export const pageQuery = graphql`
-  query Home {
-    allStrapiProducts {
+  query Home(
+    $strapiPage: String
+  ) {
+    allStrapiProducts(filter: {pages: {elemMatch: {name: {eq: $strapiPage}}}, featured: {eq: true}}, limit: 10) {
       nodes {
         name
         slug
@@ -38,6 +38,23 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    allStrapiCategories(filter: {page: {name: {eq: $strapiPage}}}, limit: 3) {
+      edges {
+        node {
+          slug
+          title
+          image_featured {
+            localFile {
+              publicURL
+            }
+          }
+        }
+      }
+    }
+    strapiPages(name: {eq: $strapiPage}) {
+      description
+      title
     }
   }
 `

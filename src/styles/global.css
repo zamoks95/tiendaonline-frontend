@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.markdownBlock h1 {
+    font-size: 1.750rem;
+    line-height: 2.25rem;
+    letter-spacing: -0.025em;
+    font-weight: bold;
+}
+
+.markdownBlock h2 {
+    font-size: 1.5rem;
+    letter-spacing: -0.025em;
+    font-weight: bold;
+}
+
+.markdownBlock h3 {
+    font-size: 1.35rem;
+    letter-spacing: -0.025em;
+    font-weight: bold;
+}
+
+.markdownBlock h4 {
+    font-size: 1.15rem;
+    letter-spacing: -0.025em;
+    font-weight: bold;
+}
+
+.markdownBlock h5 {
+    font-size: 1.05rem;
+    letter-spacing: -0.025em;
+    font-weight: bold;
+}
+
+.markdownBlock p {
+    font-size: 1.15rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+    color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.markdownBlock ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.markdownBlock ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+.markdownBlock li {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin-bottom: 1rem;
+    color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+

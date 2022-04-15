@@ -1,25 +1,25 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import HeroSingle from "../components/hero-single"
 import Seo from "../components/seo"
+import HeroSingle from "../components/hero-single"
 import CategoryGrid from "../components/category-grid"
 
-const Categorias = ({ data }) => {
-  const categories = data.allStrapiCategories.nodes
+const Destacados = ({ data }) => {
   const pageDescription = data.strapiPages;
+  const categories = data.allStrapiCategories.nodes
 
   return (
     <Layout location={'Buscador'} title={'Buscador'} pageName={pageDescription.title}>
       <Seo title="Buscador" />
-      <HeroSingle title="CATEGORÍAS" subtitle="Aquí encontrarás todas las categorías disponibles" />
+      <HeroSingle title="PRODUCTOS DESTACADOS" subtitle="Aquí encontrarás todas los productos destacados" />
       <CategoryGrid categories={categories} />
     </Layout >
   )
 }
 
 export const pageQuery = graphql`
-  query MyQuery(
+  query Destacados(
     $strapiPage: String
   ) {
     allStrapiCategories(filter: {page: {name: {eq: $strapiPage}}}) {
@@ -41,5 +41,5 @@ export const pageQuery = graphql`
   }
 
 `
-export default Categorias
+export default Destacados
 

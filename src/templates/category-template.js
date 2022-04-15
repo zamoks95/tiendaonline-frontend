@@ -7,9 +7,10 @@ import ProductGrid from "../components/product-grid"
 const CategoryTemplate = ({ data }) => {
   const category = data.strapiCategories;
   const products = data.allStrapiProducts.nodes;
+  const pageDescription = data.strapiPages;
   return (
-    <Layout>
-      <HeroSingle title={category.title} subtitle={category.description} imageSrc={category.image.localFile.publicURL} />
+    <Layout location={'title'} title={'title'} pageName={pageDescription.title}>
+      <HeroSingle title={category.title} subtitle={category.description} />
       <ProductGrid products={products} />
     </Layout>
   )
@@ -25,11 +26,6 @@ export const pageQuery = graphql`
     strapiCategories(slug: {eq: $slug}) {
       title
       description
-      image {
-        localFile {
-          publicURL
-        }
-      }
     }
     allStrapiProducts(
       filter: {pages: {elemMatch: {name: {eq: $page}}}, categories: {elemMatch: {slug: {eq: $slug}}}}
@@ -45,6 +41,11 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    strapiPages(name: {eq: $page}) {
+      description
+      title
+      color
     }
   }
 `

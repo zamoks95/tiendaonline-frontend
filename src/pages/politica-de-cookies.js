@@ -4,10 +4,9 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const UsoDeCookies = ({ data }) => {
-
-  const { name: pageName } = data.strapiPages;
+  const { name: pageName, title } = data.strapiPages;
   return (
-    <Layout location={'Política de cookies'} title={'Política de cookies'}>
+    <Layout location={'Política de cookies'} title={'Política de cookies'} pageName={title}>
       <Seo title="Política de cookies" />
       <section className='text-center lg:text-left mb-8'>
         <h1 className=' text-4xl md:text-6xl tracking-tight font-extrabold text-gray-900  mb-4'>POLÍTICA DE COOKIES</h1>
@@ -155,9 +154,13 @@ const UsoDeCookies = ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query UsoDeCookies {
-    strapiPages {
+  query UsoDeCookies(
+    $strapiPage: String
+  ) {
+    strapiPages(name: {eq: $strapiPage}) {
       name
+      title
+      color
     }
   }
 `

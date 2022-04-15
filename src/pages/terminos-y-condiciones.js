@@ -5,10 +5,9 @@ import Seo from "../components/seo"
 import { Link } from "gatsby"
 
 const TerminosYCondiciones = ({ data }) => {
-
-  const { name: pageName } = data.strapiPages;
+  const { name: pageName, title } = data.strapiPages;
   return (
-    <Layout location={'Términos y Condiciones'} title={'Términos y Condiciones'}>
+    <Layout location={'Términos y Condiciones'} title={'Términos y Condiciones'} pageName={title}>
       <Seo title="Términos y Condiciones" />
 
       <section className='text-center lg:text-left mb-8'>
@@ -143,9 +142,13 @@ const TerminosYCondiciones = ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query TerminosYCondiciones {
-    strapiPages {
+  query TerminosYCondiciones(
+    $strapiPage: String
+  ) {
+    strapiPages(name: {eq: $strapiPage}) {
       name
+      title
+      color
     }
   }
 `

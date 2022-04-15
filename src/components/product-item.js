@@ -15,14 +15,14 @@ const ProductItem = ({ product }) => {
                 )}
             </div>
             <div className='mt-2'>
-                <label className='text-xl font-bold'>{name}</label>
-                {!hasDiscount && (
-                    <p className='text-lg'>{price}€</p>
+                <h3 class="mt-4 text-md text-gray-700">{name}</h3>
+                {!hasDiscount && price && (
+                    <p class="mt-1 text-lg font-medium text-gray-900">{price}€</p>
                 )}
                 {hasDiscount && (
                     <div className='flex gap-x-2 items-end'>
-                        <span className='text-xl'>{price_discount}€</span>
-                        <span className='text-l  line-through text-red-600'>{price}€</span>
+                        <p class="mt-1 text-lg font-medium text-gray-900">{price_discount}€</p>
+                        <p class="mt-1 text-sm font-medium line-through text-red-600">{price}€</p>
                     </div>
                 )}
             </div>
