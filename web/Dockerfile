@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM node:alpine
 RUN apk add curl
 RUN apk add yarn
 RUN apk add util-linux
