@@ -1,12 +1,19 @@
 version: '2'
 services:
-  web:
+  vacaciones:
     build:
       context: ./web
       dockerfile: Dockerfile
       args:
-        - STRAPI_PAGE=xxx
-        - GTAG=xxx
-    ports:
-      - "9000:9000"
+        - STRAPI_PAGE=vacaciones
+        - GTAG=G-3LX28H0PH8
+    restart: always
+
+  juegosdemesa:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      args:
+        - STRAPI_PAGE=juegosdemesa
+        - GTAG=G-3LX28H0PH8
     restart: always
