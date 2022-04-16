@@ -3,17 +3,17 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import HeroSingle from "../components/hero-single"
-import CategoryGrid from "../components/category-grid"
+import ProductGrid from "../components/product-grid"
 
 const Destacados = ({ data }) => {
   const pageDescription = data.strapiPages;
-  const categories = data.allStrapiCategories.nodes
+  const products = data.allStrapiProducts.edges.map(({ node }) => node);
 
   return (
     <Layout location={'Buscador'} title={'Buscador'} pageName={pageDescription.title}>
       <Seo title="Buscador" />
       <HeroSingle title="PRODUCTOS DESTACADOS" subtitle="Aquí encontrarás todas los productos destacados" />
-      <CategoryGrid categories={categories} />
+      <ProductGrid products={products} />
     </Layout >
   )
 }
@@ -22,13 +22,19 @@ export const pageQuery = graphql`
   query Destacados(
     $strapiPage: String
   ) {
-    allStrapiCategories(filter: {page: {name: {eq: $strapiPage}}}) {
-      nodes {
-        title
-        slug
-        image_thumbnail {
-          localFile {
-            publicURL
+    allStrapiProducts(
+      filter: {featured: {eq: true}, pages: {elemMatch: {name: {eq: $strapiPage}}}}
+    ) {
+      edges {
+        node {
+          name
+          slug
+          price
+          price_discount
+          image {
+            localFile {
+              publicURL
+            }
           }
         }
       }

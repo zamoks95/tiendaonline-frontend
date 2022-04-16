@@ -4,10 +4,11 @@ import { Link } from 'gatsby'
 import { AiOutlineArrowRight } from 'react-icons/ai';
 const HomeCategories = ({ categories }) => {
     const [category1, category2, category3] = categories;
+    console.log(category3)
 
     const { image_featured: cat_1_image, slug: cat_1_slug, title: cat_1_title } = category1.node;
     const { image_featured: cat_2_image, slug: cat_2_slug, title: cat_2_title } = category2.node;
-    /* const { image_fetured: cat_3_image, slug: cat_3_slug, title: cat_3_title } = category3.node; */
+    const { image_featured: cat_3_image, slug: cat_3_slug, title: cat_3_title } = category3.node;
     return (
         <section className='mb-6 py-6'>
             <header className={'sm:flex justify-between mb-4'}>
@@ -22,16 +23,16 @@ const HomeCategories = ({ categories }) => {
                     </div>
                 </Link>
                 <div className='w-full md:w-1/2 flex flex-col gap-6'>
-                    <Link to={cat_2_slug} className='h-250 bg-purple-800  rounded-2xl relative px-4 overflow-hidden hover:drop-shadow-lg hover:scale-95 transition-all' style={{ backgroundPosition: 'center', backgroundImage: `url('${cat_1_image.localFile.publicURL}')` }}>
+                    <Link to={cat_2_slug} className='h-250 bg-purple-800  rounded-2xl relative px-4 overflow-hidden hover:drop-shadow-lg hover:scale-95 transition-all' style={{ backgroundPosition: 'center', backgroundImage: `url('${cat_2_image.localFile.publicURL}')` }}>
                         <span className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-32 opacity-50'></span>
                         <div className='absolute bottom-4'>
                             <label className='text-3xl font-bold text-white' style={{ textShadow: '1px 1px 3px black' }}>{cat_2_title}</label>
                         </div>
                     </Link>
-                    <Link to={cat_2_slug} className='h-250 bg-purple-800 rounded-2xl relative px-4 overflow-hidden hover:drop-shadow-lg hover:scale-95 transition-all' style={{ backgroundPosition: 'center', backgroundImage: `url('${cat_1_image.localFile.publicURL}')` }}>
+                    <Link to={cat_3_slug} className='h-250 bg-purple-800 rounded-2xl relative px-4 overflow-hidden hover:drop-shadow-lg hover:scale-95 transition-all' style={{ backgroundPosition: 'center', backgroundImage: `url('${cat_3_image.localFile.publicURL}')` }}>
                         <span className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-32 opacity-50'></span>
                         <div className='absolute bottom-4'>
-                            <label className='text-3xl font-bold text-white' style={{ textShadow: '1px 1px 3px black' }}>{cat_2_title}</label>
+                            <label className='text-3xl font-bold text-white' style={{ textShadow: '1px 1px 3px black' }}>{cat_3_title}</label>
                         </div>
 
                     </Link>
