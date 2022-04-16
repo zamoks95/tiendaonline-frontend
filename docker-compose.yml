@@ -4,6 +4,9 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    environment:
-      - NODE_ENV=production
+      args:
+        - STRAPI_PAGE=xxx
+        - GTAG=xxx
+    ports:
+      - "9000:9000"
     restart: always

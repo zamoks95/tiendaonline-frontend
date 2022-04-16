@@ -5,6 +5,9 @@ RUN apk add util-linux
 RUN apk add --update nodejs
 RUN yarn global add gatsby-cli
 
+ARG STRAPI_PAGE
+ARG GTAG
+
 COPY . /app
 
 WORKDIR /app
