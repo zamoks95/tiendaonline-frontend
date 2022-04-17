@@ -12,17 +12,17 @@ services:
     networks:
       - proxy
   
-  juegosdemesa:
-    image: ghcr.io/zamoks95/tiendaonline-frontend/juegosdemesa
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-      args:
-        - STRAPI_PAGE=juegosdemesa
-        - GTAG=G-3LX28H0PH8
-    restart: always
-    networks:
-      - proxy
+  #juegosdemesa:
+    #image: ghcr.io/zamoks95/tiendaonline-frontend/juegosdemesa
+    #build:
+      #context: ./web
+      #dockerfile: Dockerfile
+      #args:
+        #- STRAPI_PAGE=juegosdemesa
+        #- GTAG=G-3LX28H0PH8
+    #restart: always
+    #networks:
+      #- proxy
   
 networks:
   proxy:
