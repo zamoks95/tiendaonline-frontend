@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './pagination.css';
 
-import ProductItem2 from '../product-item'
+import ProductItem from '../product-item'
 
 const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 }
 const HomeFavorites = ({ products }) => {
@@ -44,7 +44,7 @@ const HomeFavorites = ({ products }) => {
                     >
                         {products.map((product) => (
                             <SwiperSlide key={product.slug}>
-                                <ProductItem2 product={product} />
+                                <ProductItem product={product} />
                             </SwiperSlide>
                         ))}
 

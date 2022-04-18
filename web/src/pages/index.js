@@ -12,7 +12,7 @@ const Index = ({ data }) => {
   const categories = data.allStrapiCategories.edges;
   return (
     <Layout pageName={pageDescription.title}>
-      <Seo title={`Tienda Online de ${pageDescription.title}`} />
+      <Seo title={`Tienda Online de ${pageDescription.title}`} description={pageDescription.meta_description} metaKeywords={pageDescription.meta_keywords} metaOgImage={pageDescription.ogg_image.localFile.publicURL} />
       <HomeHeader pageDescription={pageDescription} />
       <HomeCategories categories={categories} />
       <HomeFavorites products={products} />
@@ -53,8 +53,15 @@ export const pageQuery = graphql`
       }
     }
     strapiPages(name: {eq: $strapiPage}) {
-      description
       title
+      description
+      meta_keywords
+      meta_description
+      ogg_image {
+        localFile {
+          publicURL
+        }
+      }
     }
   }
 `

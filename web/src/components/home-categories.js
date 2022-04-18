@@ -4,8 +4,6 @@ import { Link } from 'gatsby'
 import { AiOutlineArrowRight } from 'react-icons/ai';
 const HomeCategories = ({ categories }) => {
     const [category1, category2, category3] = categories;
-    console.log(category3)
-
     const { image_featured: cat_1_image, slug: cat_1_slug, title: cat_1_title } = category1.node;
     const { image_featured: cat_2_image, slug: cat_2_slug, title: cat_2_title } = category2.node;
     const { image_featured: cat_3_image, slug: cat_3_slug, title: cat_3_title } = category3.node;

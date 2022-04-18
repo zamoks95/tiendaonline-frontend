@@ -46,8 +46,10 @@ const Navbar = ({ title }) => {
                     </div>
                     <div className="flex justify-center ml-0 lg:ml-8 w-full lg:w-auto mt-3 mb-1 lg:my-0">
                         <div className="input-group flex items-stretch w-full">
-                            <input type="search" className=" flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Buscar producto" aria-label="Search" aria-describedby="button-addon3" value={query} onChange={(event) => setQuery(event.target.value)} />
-                            <button className={`btn inline-block px-3 py-2 border-2 border-indigo-600 text-indigo-600 font-medium text-md rounded`} type="button" id="button-addon3" onClick={handleSearchClick}><AiOutlineSearch /></button>
+                            <label htmlFor="Search" className="hidden">inputSearch</label>
+                            <input type="search" id="inputSearch" className=" flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Buscar producto" aria-label="Search" aria-describedby="button-addon3" value={query} onChange={(event) => setQuery(event.target.value)} />
+                            <label htmlFor="sendSearch" className="hidden">sendSearch</label>
+                            <button id="sendSearch" aria-label="sendSearch" className={`btn inline-block px-3 py-2 border-2 border-indigo-600 text-indigo-600 font-medium text-md rounded`} type="button" onClick={handleSearchClick}><AiOutlineSearch /></button>
                         </div>
                     </div>
                 </div>

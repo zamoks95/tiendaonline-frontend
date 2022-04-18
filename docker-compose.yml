@@ -1,7 +1,7 @@
 version: '2'
 services:
   vacaciones:
-    image: ghcr.io/zamoks95/tiendaonline-frontend/vacaciones
+    image: ghcr.io/zamoks95/tiendaonline-frontend/vacaciones:latest
     build:
       context: ./web
       dockerfile: Dockerfile

@@ -49,7 +49,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     {
       allStrapiProducts(filter: {pages: {elemMatch: {name: {eq: "${process.env.STRAPI_PAGE}"}}}}) {
         nodes {
-          slug
+          slug 
+          categories {
+            name
+          }
         }
       }
     }
@@ -71,6 +74,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: productTemplate,
         context: {
           slug: product.slug,
+          mainCategory: product.categories[0].name
         },
       })
     })
