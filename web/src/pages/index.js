@@ -57,6 +57,11 @@ export const pageQuery = graphql`
       description
       meta_keywords
       meta_description
+      main_image {
+        localFile {
+          publicURL
+        }
+      }
       ogg_image {
         localFile {
           publicURL
