@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         - STRAPI_PAGE=vacaciones
+        - PAGE_URL=https://vacaciones.tiendaonline.one
         - GTAG=G-3LX28H0PH8
     restart: always
     networks:

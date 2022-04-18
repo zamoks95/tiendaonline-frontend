@@ -32,6 +32,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-gtag`,
@@ -49,7 +50,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Tienda online de ${process.env.STRAPI_PAGE}`,
-        short_name: `${process.env.STRAPI_PAGE}.tiendaonline.one`,
+        short_name: process.env.PAGE_URL,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#4338ca`,
@@ -105,6 +106,5 @@ module.exports = {
           }),
       },
     }
-      `gatsby-plugin-offline`,
   ],
 }

@@ -37,7 +37,7 @@ const Seo = ({ description, meta, title, metaKeywords, metaOgImage }) => {
 
         {
           property: `og:image`,
-          content: `${window.location.origin}${metaOgImage}`,
+          content: `${process.env.PAGE_URL}${metaOgImage}`,
         },
         {
           property: `og:type`,
