@@ -14,9 +14,6 @@ const Footer = () => {
                 <li>
                     <Link to="/terminos-y-condiciones" className="mr-4 hover:underline md:mr-6 text-white">Términos y condiciones</Link>
                 </li>
-                <li>
-                    <Link to="/terminos-y-condiciones" className="hover:underline text-white">Mapa web</Link>
-                </li>
             </ul>
         </footer>
     )

@@ -1,14 +1,14 @@
 version: '2'
 services:
   vacaciones:
-    image: ghcr.io/zamoks95/tiendaonline-frontend/vacaciones:latest
+    image: ghcr.io/zamoks95/tiendaonline-frontend/playa:latest
     build:
       context: ./web
       dockerfile: Dockerfile
       args:
-        - STRAPI_PAGE=vacaciones
-        - PAGE_URL=https://vacaciones.tiendaonline.one
-        - GTAG=G-3LX28H0PH8
+        - STRAPI_PAGE=playa
+        - PAGE_URL=https://playa.tiendaonline.one
+        - GTAG=G-XDQBVMGJHW
     restart: always
     networks:
       - proxy

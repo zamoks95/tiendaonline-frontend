@@ -1,6 +1,7 @@
 import * as React from "react"
 import Footer from "./footer"
 import Navbar from "./navbar"
+import Cookies from "./cookies"
 
 const Layout = ({ pageName, children }) => {
   return (
@@ -8,6 +9,7 @@ const Layout = ({ pageName, children }) => {
       <Navbar title={pageName} />
       <main className="max-w-screen-xl m-auto py-10 px-4">{children}</main>
       <Footer />
+      <Cookies />
     </div>
   )
 }
