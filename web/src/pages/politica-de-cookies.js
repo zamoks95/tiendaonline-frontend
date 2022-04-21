@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 const UsoDeCookies = ({ data }) => {
   const { name: pageName, title } = data.strapiPages;
   return (
-    <Layout location={'Política de cookies'} title={'Política de cookies'} pageName={title}>
+    <Layout pageName={title}>
       <Seo title="Política de cookies" />
       <section className='text-center lg:text-left mb-8'>
         <h1 className=' text-4xl md:text-6xl tracking-tight font-extrabold text-gray-900  mb-4'>POLÍTICA DE COOKIES</h1>

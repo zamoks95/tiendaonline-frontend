@@ -8,8 +8,8 @@ const NotFoundPage = ({ data }) => {
 
   const pageDescription = data.strapiPages;
   return (
-    <Layout location={'Buscador'} title={'Buscador'} pageName={pageDescription.title}>
-      <Seo title="404: Not Found" />
+    <Layout pageName={pageDescription.title}>
+      <Seo title="404: Página no encontrada" />
 
       <div className="flex items-center justify-center min-h-screen bg-white py-48">
         <div className="flex flex-col">

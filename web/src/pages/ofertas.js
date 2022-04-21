@@ -11,8 +11,8 @@ const Ofertas = ({ data }) => {
   const discountedProducts = products.filter(({ price_discount }) => price_discount !== null);
 
   return (
-    <Layout location={'Buscador'} title={'Buscador'} pageName={pageDescription.title}>
-      <Seo title="Buscador" />
+    <Layout pageName={pageDescription.title}>
+      <Seo title={"Ofertas"} description={'Encuentra todos las ofertas de esta página web'} metaKeywords={'Ofertas'} />
       <HeroSingle title="OFERTAS" subtitle="Aquí encontrarás todas los productos en oferta" />
       <ProductGrid products={discountedProducts} />
     </Layout >

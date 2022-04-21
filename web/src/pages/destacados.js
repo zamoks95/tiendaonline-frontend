@@ -10,8 +10,8 @@ const Destacados = ({ data }) => {
   const products = data.allStrapiProducts.edges.map(({ node }) => node);
 
   return (
-    <Layout location={'Buscador'} title={'Buscador'} pageName={pageDescription.title}>
-      <Seo title="Buscador" />
+    <Layout pageName={pageDescription.title}>
+      <Seo title={"Productos destacados"} description={'Encuentra todos los productos destacados de esta página web'} metaKeywords={'Productos Destacados'} />
       <HeroSingle title="PRODUCTOS DESTACADOS" subtitle="Aquí encontrarás todas los productos destacados" />
       <ProductGrid products={products} />
     </Layout >

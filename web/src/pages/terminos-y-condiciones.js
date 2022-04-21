@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 const TerminosYCondiciones = ({ data }) => {
   const { name: pageName, title } = data.strapiPages;
   return (
-    <Layout location={'Términos y Condiciones'} title={'Términos y Condiciones'} pageName={title}>
+    <Layout pageName={title}>
       <Seo title="Términos y Condiciones" />
 
       <section className='text-center lg:text-left mb-8'>

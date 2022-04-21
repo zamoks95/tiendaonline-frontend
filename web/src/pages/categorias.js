@@ -10,8 +10,8 @@ const Categorias = ({ data }) => {
   const pageDescription = data.strapiPages;
 
   return (
-    <Layout location={'Buscador'} title={'Buscador'} pageName={pageDescription.title}>
-      <Seo title="Buscador" />
+    <Layout pageName={pageDescription.title}>
+      <Seo title={"Categorías"} description={'Encuentra todas las categorías de esta página web'} metaKeywords={'Encuentra todas las categorías de esta página web'} />
       <HeroSingle title="CATEGORÍAS" subtitle="Aquí encontrarás todas las categorías disponibles" />
       <CategoryGrid categories={categories} />
     </Layout >

@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 const PoliticaPrivacidad = ({ data }) => {
   const { name: pageName, title } = data.strapiPages;
   return (
-    <Layout location={'Politica de Privacidad'} title={'Politica de Privacidad'} pageName={title}>
+    <Layout pageName={title}>
       <Seo title="Politica de Privacidad" />
       <section className='text-center lg:text-left mb-8'>
         <h1 className=' text-4xl md:text-6xl tracking-tight font-extrabold text-gray-900  mb-4'>POLÍTICA DE PRIVACIDAD</h1>
