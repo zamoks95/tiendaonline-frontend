@@ -1,6 +1,6 @@
 version: '2'
 services:
-  vacaciones:
+  playa:
     image: ghcr.io/zamoks95/tiendaonline-frontend/playa:latest
     build:
       context: ./web
