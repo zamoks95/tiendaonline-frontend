@@ -1,24 +1,20 @@
-FROM node:alpine
-RUN apk add curl
-RUN apk add yarn
-RUN apk add util-linux
-RUN apk add --update nodejs
-RUN yarn global add gatsby-cli
+# base image
+FROM node:14.15.0
 
 ARG STRAPI_PAGE
 ARG GTAG
+ARG PAGE_URL
 
-COPY . /app
-
+COPY . /app/
 WORKDIR /app
 
-RUN yarn install --force
-
-RUN gatsby clean
-RUN gatsby build
+RUN yarn install
+RUN yarn clean
+RUN yarn build
 
 EXPOSE 9000
 
 HEALTHCHECK --interval=15s --timeout=5s CMD curl -f http://0.0.0.0:9000 || exit 
 
 CMD ["gatsby","serve","-H", "0.0.0.0"]
+
