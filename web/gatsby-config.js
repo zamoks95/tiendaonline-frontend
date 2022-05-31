@@ -1,21 +1,12 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    siteUrl: `${process.env.PAGE_URL}`,
   },
   plugins: [
+    `gatsby-plugin-advanced-sitemap`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -32,7 +23,6 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-gtag`,
@@ -56,8 +46,12 @@ module.exports = {
         theme_color: `#4338ca`,
         display: `minimal-ui`,
         icon: `src/images/tiendaonline-icon.png`, // This path is relative to the root of the site.
+        icon_options: {
+          purpose: `any maskable`,
+        },
       },
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-strapi`,

@@ -48,7 +48,7 @@ const ProductTemplate = ({ data }) => {
               <ProductSlideshow gallerySmall={gallery_small} galleryBig={gallery_big} />
             </div>
             <div className="md:flex-1 px-4 mt-4 md:mt-0">
-              <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl">{product.name}</h2>
+              <h1 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl">{product.name}</h1>
               <div className="flex items-center space-x-4 my-4">
                 {price_discount !== null && (
                   <>

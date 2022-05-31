@@ -8,7 +8,7 @@ const TerminosYCondiciones = ({ data }) => {
   const { name: pageName, title } = data.strapiPages;
   return (
     <Layout pageName={title}>
-      <Seo title="Términos y Condiciones" />
+      <Seo title="Términos y Condiciones" description={'Encuentra en esta página todos los términos y condiciones'} metaKeywords={'Términos y Condiciones'} />
 
       <section className='text-center lg:text-left mb-8'>
         <h1 className=' text-4xl md:text-6xl tracking-tight font-extrabold text-gray-900  mb-4'>TÉRMINOS Y CONDICIONES</h1>

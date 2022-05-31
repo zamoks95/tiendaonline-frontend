@@ -7,7 +7,7 @@ const UsoDeCookies = ({ data }) => {
   const { name: pageName, title } = data.strapiPages;
   return (
     <Layout pageName={title}>
-      <Seo title="Política de cookies" />
+      <Seo title="Política de cookies" description={'Encuentra en esta página toda la información sobre nuestra política de cookies'} metaKeywords={'Política de cookies'} />
       <section className='text-center lg:text-left mb-8'>
         <h1 className=' text-4xl md:text-6xl tracking-tight font-extrabold text-gray-900  mb-4'>POLÍTICA DE COOKIES</h1>
         <p className='text-xl text-gray-800 mb-4'>En esta web se utilizan cookies de terceros y propias para conseguir que tengas una mejor experiencia de navegación, puedas compartir contenido en redes sociales y para que podamos obtener estadísticas de los usuarios.</p>

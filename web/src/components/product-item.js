@@ -7,7 +7,7 @@ const ProductItem = ({ product }) => {
     return (
         <Link to={`/${slug}`} className='block w-auto hover:drop-shadow-lg hover:scale-95 transition-all'>
             <div className={`rounded-2xl overflow-hidden relative ${hasDiscount ? 'border-4 border-violet-600' : ''}`} style={{ background: '#f1f5f8' }}>
-                <img src={image.localFile.publicURL} alt={name} className="h-250 object-cover m-auto" />
+                <img src={image.localFile.publicURL} alt={name} className="h-250 object-cover m-auto" style={{ height: '360px', width: '294px' }} />
                 {hasDiscount && (
                     <div className='absolute bottom-0 w-full font-bold py-2 text-center bg-violet-600 text-lg text-white'>
                         <span>OFERTA</span>

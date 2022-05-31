@@ -6,6 +6,11 @@ const Navbar = ({ title }) => {
     const [query, setQuery] = useState('');
     const handleSearchClick = () => window.location.href = `/buscador?search=${query}`;
 
+    const commonLinks = [
+        { name: 'Categorías', url: "/categorias", title: "Ir a Categorias" },
+        { name: 'Productos destacados', url: "/destacados", title: "Ir a Productos Destacados" },
+        { name: 'Ofertas', url: "/ofertas", title: "Ir a Ofertas" },
+    ]
     return (
         <nav className={`bg-white shadow-sm sticky top-0 left-0 z-50`}>
             <div className="max-w-7xl mx-auto px-4 md:px-12 py-1 md:py-4">
@@ -22,27 +27,16 @@ const Navbar = ({ title }) => {
                         {isOpen && <AiOutlineClose />}
                     </button>
                     <div className="hidden md:flex space-x-3 flex-1 ml-8">
-                        <Link
-                            to={`/categorias`}
-                            title={`Ir a Categorias`}
-                            className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
-                        >
-                            Categorías
-                        </Link>
-                        <Link
-                            to={`/destacados`}
-                            title={`Ir a Productos Destacados`}
-                            className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
-                        >
-                            Productos destacados
-                        </Link>
-                        <Link
-                            to={`/ofertas`}
-                            title={`Ir a Ofertas`}
-                            className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
-                        >
-                            Ofertas
-                        </Link>
+                        {commonLinks.map(({ name, url, title }) => (
+                            <Link
+                                key={name}
+                                to={url}
+                                title={title}
+                                className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-gray-800"
+                            >
+                                {name}
+                            </Link>
+                        ))}
                     </div>
                     <div className="flex justify-center ml-0 lg:ml-8 w-full lg:w-auto mt-3 mb-1 lg:my-0">
                         <div className="input-group flex items-stretch w-full">
@@ -55,27 +49,16 @@ const Navbar = ({ title }) => {
                 </div>
                 {isOpen &&
                     <div className="flex flex-col md:hidden">
-                        <Link
-                            to={`/categorias`}
-                            title={`Ir a Categorias`}
-                            className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
-                        >
-                            Categorías
-                        </Link>
-                        <Link
-                            to={`/destacados`}
-                            title={`Ir a Productos Destacados`}
-                            className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
-                        >
-                            Productos destacados
-                        </Link>
-                        <Link
-                            to={`/ofertas`}
-                            title={`Ir a Ofertas`}
-                            className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600"
-                        >
-                            Ofertas
-                        </Link>
+                        {commonLinks.map(({ name, url, title }) => (
+                            <Link
+                                key={`${name}-mobile`}
+                                to={url}
+                                title={title}
+                                className="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-gray-800"
+                            >
+                                {name}
+                            </Link>
+                        ))}
                     </div>
                 }
             </div>

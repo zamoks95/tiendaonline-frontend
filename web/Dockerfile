@@ -1,16 +1,22 @@
-# base image
-FROM node:14.15.0
+FROM alpine:latest
+RUN apk add curl
+RUN apk add yarn
+RUN apk add util-linux
+RUN apk add --update nodejs
+RUN yarn global add gatsby-cli
 
 ARG STRAPI_PAGE
 ARG GTAG
 ARG PAGE_URL
 
-COPY . /app/
+COPY . /app
+
 WORKDIR /app
 
 RUN yarn install
-RUN yarn clean
-RUN yarn build
+
+RUN gatsby clean
+RUN gatsby build
 
 EXPOSE 9000
 

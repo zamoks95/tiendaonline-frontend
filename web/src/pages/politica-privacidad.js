@@ -7,7 +7,7 @@ const PoliticaPrivacidad = ({ data }) => {
   const { name: pageName, title } = data.strapiPages;
   return (
     <Layout pageName={title}>
-      <Seo title="Politica de Privacidad" />
+      <Seo title="Política de Privacidad" description={'Encuentra en esta página toda la información sobre la política de privacidad'} metaKeywords={'Politica de Privacidad'} />
       <section className='text-center lg:text-left mb-8'>
         <h1 className=' text-4xl md:text-6xl tracking-tight font-extrabold text-gray-900  mb-4'>POLÍTICA DE PRIVACIDAD</h1>
         <p className='text-xl text-gray-800 mb-4'>La presente <strong>Política de Privacidad</strong> establece los términos en que  usa y protege la información que <strong>{pageName}.tiendaonline.one</strong> es proporcionada por sus usuarios al momento de utilizar su sitio web.</p>

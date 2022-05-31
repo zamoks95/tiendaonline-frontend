@@ -16,7 +16,7 @@ const Cookies = () => {
             <div className="w-full">Esta pagina web utiliza Cookies para ofrecerte la mejor experiencia de usuario posible. Si continuas navegando por esta pagina web, aceptas el uso de estas cookies.
                 <Link to="/politica-de-cookies" className="text-indigo-600 whitespace-nowrap  hover:underline ml-2">Leer más</Link></div>
             <div className="flex gap-4 items-center flex-shrink-0">
-                <button onClick={() => handleAccept()} className="bg-indigo-500 px-5 py-2 text-white rounded-md hover:bg-indigo-700 focus:outline-none">Aceptar Cookies</button>
+                <button onClick={() => handleAccept()} className="bg-indigo-700 px-5 py-2 text-white rounded-md hover:bg-indigo-900 focus:outline-none">Aceptar Cookies</button>
             </div>
         </div >
     )
