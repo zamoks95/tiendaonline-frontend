@@ -13,7 +13,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN yarn install
+RUN yarn install --force
 
 RUN gatsby clean
 RUN gatsby build
