@@ -12,18 +12,19 @@ services:
     restart: always
     networks:
       - proxy
-  
-  #juegosdemesa:
-    #image: ghcr.io/zamoks95/tiendaonline-frontend/juegosdemesa
-    #build:
-      #context: ./web
-      #dockerfile: Dockerfile
-      #args:
-        #- STRAPI_PAGE=juegosdemesa
-        #- GTAG=G-3LX28H0PH8
-    #restart: always
-    #networks:
-      #- proxy
+
+  powerlifting:
+    image: ghcr.io/zamoks95/tiendaonline-frontend/powerlifting:latest
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      args:
+        - STRAPI_PAGE=powerlifting
+        - PAGE_URL=https://powerlifting.tiendaonline.one
+        - GTAG=G-YQ0EBYVJLF
+    restart: always
+    networks:
+      - proxy
   
 networks:
   proxy:
