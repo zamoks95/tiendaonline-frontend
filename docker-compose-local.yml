@@ -1,0 +1,28 @@
+version: '2'
+services:
+  playa:
+    image: ghcr.io/zamoks95/tiendaonline-frontend/playa:latest
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      args:
+        - STRAPI_PAGE=playa
+        - PAGE_URL=https://playa.tiendaonline.one
+        - GTAG=G-XDQBVMGJHW
+    ports:
+      - 9001:9000
+    restart: always
+
+  powerlifting:
+    image: ghcr.io/zamoks95/tiendaonline-frontend/powerlifting:latest
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      args:
+        - STRAPI_PAGE=powerlifting
+        - PAGE_URL=https://powerlifting.tiendaonline.one
+        - GTAG=G-YQ0EBYVJLF
+    ports:
+      - 9002:9000
+    restart: always
+    
